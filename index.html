@@ -131,14 +131,14 @@
                 ctx.drawImage(cardImage, 0, 0, canvas.width, canvas.height);
 
                 // نص المعايدة الأول
-                ctx.font = '32px Mestika';
+                ctx.font = '42px Mestika';
                 ctx.fillStyle = '#000';
                 ctx.textAlign = 'center';
                 ctx.fillText('كل عام وأنتم بخير!', canvas.width / 2, canvas.height - 150);
 
                 // نص التوقيع باسم المستخدم بحجم أكبر
-                ctx.font = '42px Mestika';
-                ctx.fillText(`${name}`, canvas.width / 2, canvas.height - 90);
+                ctx.font = '32px Mestika';
+                ctx.fillText(`~ ${name}`, canvas.width / 2, canvas.height - 90);
 
                 downloadLink.href = canvas.toDataURL('image/png');
                 downloadLink.style.display = 'block';
