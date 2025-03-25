@@ -1,8 +1,8 @@
 @font-face {
     font-family: 'Mestika';
-    src: url('../fonts/Mestika.woff2') format('woff2'),
-         url('../fonts/Mestika.woff') format('woff'),
-         url('../fonts/Mestika.ttf') format('truetype');
+    src: url('./fonts/Mestika.woff2') format('woff2'),
+         url('./fonts/Mestika.woff') format('woff'),
+         url('./fonts/Mestika.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
     font-display: swap;
