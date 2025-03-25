@@ -72,6 +72,18 @@
                 font-size: 16px;
             }
         }
+        .follow-link {
+            margin-top: 30px;
+        }
+        .follow-link a {
+            color: white;
+            text-decoration: underline;
+            font-size: 18px;
+            transition: color 0.3s;
+        }
+        .follow-link a:hover {
+            color: #ffcc00;
+        }
     </style>
 </head>
 <body>
@@ -89,6 +101,10 @@
         <button onclick="generateGreetingCard()">أنشئ البطاقة</button>
         <canvas id="greetingCanvas" width="800" height="600"></canvas>
         <a href="#" id="downloadLink" download="بطاقة_معايدة.png">تحميل البطاقة</a>
+
+        <div class="follow-link">
+            <a href="https://linkin.bio/kalamashii" target="_blank">تابع كلماشي من هنا</a>
+        </div>
     </div>
 
     <script>
