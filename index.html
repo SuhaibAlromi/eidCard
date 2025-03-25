@@ -4,75 +4,86 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>بطاقة معايدة</title>
-
     <style>
         @font-face {
             font-family: 'Mestika';
             src: url('https://cdn.jsdelivr.net/gh/SuhaibAlromi/font@main/Mestika.woff2') format('woff2');
             font-display: swap;
         }
+
         body {
             font-family: 'Mestika', sans-serif;
             display: flex;
             justify-content: center;
             align-items: center;
             min-height: 100vh;
-            background-color: #000000;
+            background-color: #000;
             margin: 0;
             padding: 20px;
             text-align: center;
             color: white;
         }
+
         .container {
             background-color: #1a1a1a;
             padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(255,255,255,0.1);
-            max-width: 90%;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(255, 255, 255, 0.1);
             width: 100%;
+            max-width: 500px;
         }
+
         input[type="text"], button, a {
             width: 100%;
-            padding: 10px;
+            padding: 12px;
             margin: 10px 0;
             border: 1px solid #444;
-            border-radius: 5px;
-            font-family: 'Mestika', sans-serif;
+            border-radius: 6px;
             background-color: #2a2a2a;
             color: white;
+            font-family: 'Mestika', sans-serif;
         }
+
         button {
-            background-color: white;
-            color: black;
-            font-weight: bold;
+            background-color: #fff;
+            color: #000;
             cursor: pointer;
+            font-weight: bold;
         }
+
         canvas {
             width: 100%;
             height: auto;
             margin-top: 20px;
-            box-shadow: 0 4px 6px rgba(255,255,255,0.1);
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(255, 255, 255, 0.1);
         }
+
         #downloadLink {
             display: none;
-            margin-top: 15px;
+            margin-top: 20px;
             text-decoration: none;
-            background-color: white;
-            color: black;
+            background-color: #fff;
+            color: #000;
             padding: 10px 20px;
-            border-radius: 5px;
+            border-radius: 6px;
+            font-weight: bold;
         }
+
         h2 {
-            font-size: 5vw;
+            font-size: 32px;
+            margin-bottom: 20px;
         }
-        @media (max-width: 600px) {
-            h2 {
-                font-size: 24px;
-            }
-            button, input, a {
-                font-size: 16px;
-            }
+
+        .gender-container {
+            margin: 10px 0;
+            text-align: right;
         }
+
+        .gender-container label {
+            margin-left: 15px;
+        }
+
     </style>
 </head>
 <body>
@@ -87,7 +98,7 @@
                 <input type="radio" name="gender" value="female"> أنثى
             </label>
         </div>
-        <button onclick="generateGreetingCard()">أنشئ البطاقة</button>
+        <button onclick="generateGreetingCard()">إنشاء البطاقة</button>
         <canvas id="greetingCanvas" width="800" height="600"></canvas>
         <a href="#" id="downloadLink" download="بطاقة_معايدة.png">تحميل البطاقة</a>
     </div>
@@ -104,19 +115,21 @@
             const pronoun = (gender === 'female') ? 'أنتِ' : 'أنت';
 
             const cardImage = new Image();
-            cardImage.src = 'eid_card.jpg'; // تأكد من وجود الصورة بجانب ملف HTML
-            cardImage.onload = function() {
-                ctx.drawImage(cardImage, 0, 0, canvas.width, canvas.height);
+            cardImage.src = 'eid_card.jpg';
+            cardImage.onload = function () {
+                document.fonts.load('36px "Mestika"').then(function () {
+                    ctx.drawImage(cardImage, 0, 0, canvas.width, canvas.height);
 
-                ctx.font = 'bold 36px "Mestika"';
-                ctx.fillStyle = '#333';
-                ctx.textAlign = 'center';
+                    ctx.font = 'bold 36px "Mestika"';
+                    ctx.fillStyle = '#333';
+                    ctx.textAlign = 'center';
 
-                const greetingText = `كل عام و${pronoun} بخير يا ${name}`;
-                ctx.fillText(greetingText, canvas.width / 2, canvas.height - 50);
+                    const greetingText = `كل عام و${pronoun} بخير يا ${name}`;
+                    ctx.fillText(greetingText, canvas.width / 2, canvas.height - 50);
 
-                downloadLink.href = canvas.toDataURL('image/png');
-                downloadLink.style.display = 'inline-block';
+                    downloadLink.href = canvas.toDataURL('image/png');
+                    downloadLink.style.display = 'inline-block';
+                });
             };
         }
     </script>
