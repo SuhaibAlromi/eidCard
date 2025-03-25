@@ -105,7 +105,7 @@
     <div class="container">
         <img src="logo.png" alt="شعار كلماشي" class="logo">
         <h2>بطاقة معايدة كلماشيّة</h2>
-        <input type="text" id="nameInput" placeholder="أدخل اسم المستلم">
+        <input type="text" id="nameInput" placeholder="أدخل اسمك">
         <button onclick="generateGreetingCard()">أنشئ البطاقة</button>
         <canvas id="greetingCanvas" width="800" height="800"></canvas>
         <a href="#" id="downloadLink" download="بطاقة_معايدة.png">تحميل البطاقة</a>
@@ -122,19 +122,23 @@
         const downloadLink = document.getElementById('downloadLink');
 
         function generateGreetingCard() {
-            const name = nameInput.value.trim() || 'صديقي';
+            const name = nameInput.value.trim() || 'صديقكم';
 
             const cardImage = new Image();
-            cardImage.src = 'eid_card.jpg';
+            cardImage.src = 'eid_card.JPG';
             cardImage.onload = function() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
                 ctx.drawImage(cardImage, 0, 0, canvas.width, canvas.height);
 
-                ctx.font = '36px Mestika';
-                ctx.fillStyle = '#333';
+                // نص المعايدة الأول
+                ctx.font = '32px Mestika';
+                ctx.fillStyle = '#000';
                 ctx.textAlign = 'center';
+                ctx.fillText('كل عام وأنتم بخير!', canvas.width / 2, canvas.height - 100);
 
-                const greetingText = `كل عام وأنت بخير يا ${name}`;
-                ctx.fillText(greetingText, canvas.width / 2, canvas.height - 50);
+                // نص التوقيع باسم المستخدم بحجم أكبر
+                ctx.font = '42px Mestika';
+                ctx.fillText(`محبّكم ${name}`, canvas.width / 2, canvas.height - 50);
 
                 downloadLink.href = canvas.toDataURL('image/png');
                 downloadLink.style.display = 'block';
