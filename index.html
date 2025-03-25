@@ -5,14 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>بطاقة معايدة</title>
 
-    <!-- استيراد خط Tajawal من Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap" rel="stylesheet">
-
+    <!-- استدعاء الخط من رابط Netlify -->
     <style>
+        @font-face {
+            font-family: 'Mestika';
+            src: url('https://merry-griffin-0fb7de.netlify.app/Mestika.woff2') format('woff2');
+            font-display: swap;
+        }
         body {
-            font-family: 'Tajawal', sans-serif;
+            font-family: 'Mestika', sans-serif;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -37,7 +38,7 @@
             margin: 10px 0;
             border: 1px solid #444;
             border-radius: 5px;
-            font-family: 'Tajawal', sans-serif;
+            font-family: 'Mestika', sans-serif;
             background-color: #2a2a2a;
             color: white;
         }
@@ -104,12 +105,11 @@
             const pronoun = (gender === 'female') ? 'أنتِ' : 'أنت';
 
             const cardImage = new Image();
-            cardImage.src = 'eid_card.jpg'; // تأكد من وجود eid_card.jpg في نفس المجلد
+            cardImage.src = 'eid_card.jpg'; // تأكد من وجود الصورة بجانب الملف
             cardImage.onload = function() {
                 ctx.drawImage(cardImage, 0, 0, canvas.width, canvas.height);
 
-                // تحديد الخط (Bold 36px من خط Tajawal)
-                ctx.font = 'bold 36px "Tajawal"';
+                ctx.font = 'bold 36px "Mestika"';
                 ctx.fillStyle = '#333';
                 ctx.textAlign = 'center';
 
