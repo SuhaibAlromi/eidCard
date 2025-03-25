@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>بطاقة معايدة</title>
 
-    <!-- استدعاء الخط من رابط Netlify -->
     <style>
         @font-face {
             font-family: 'Mestika';
@@ -105,7 +104,7 @@
             const pronoun = (gender === 'female') ? 'أنتِ' : 'أنت';
 
             const cardImage = new Image();
-            cardImage.src = 'eid_card.jpg'; // تأكد من وجود الصورة بجانب الملف
+            cardImage.src = 'eid_card.jpg'; // تأكد من وجود الصورة بجانب ملف HTML
             cardImage.onload = function() {
                 ctx.drawImage(cardImage, 0, 0, canvas.width, canvas.height);
 
