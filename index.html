@@ -5,11 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>بطاقة معايدة</title>
     <style>
-     @font-face {
-  font-family: 'Manchette';
-  src: url('./font/Abjad - Manchette Bold.otf') format('opentype');
-  font-display: swap;
-}
+        @font-face {
+            font-family: 'Manchette';
+            src: url('./font/Abjad - Manchette UltraLight.otf') format('opentype');
+            font-display: swap;
+        }
         body {
             font-family: 'Manchette', sans-serif;
             display: flex;
@@ -137,10 +137,10 @@
                 ctx.drawImage(cardImage, 0, 0);
 
                 // نضيف الاسم في نفس موضع "عبدالرحمن الرومي"
-                ctx.font = '256px ManchetteْUltraLight';
+                ctx.font = '48px Manchette';
                 ctx.fillStyle = '#000';
                 ctx.textAlign = 'center';
-                ctx.fillText(`- ${name}`, canvas.width / 2, 1200);
+                ctx.fillText(`- ${name}`, canvas.width / 2, 310);
 
                 // تحضير رابط التحميل
                 downloadLink.href = canvas.toDataURL('image/png');
