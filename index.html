@@ -107,7 +107,7 @@
         <h2>بطاقة معايدة كلماشيّة</h2>
         <input type="text" id="nameInput" placeholder="اكتب اسمك الثنائي">
         <button onclick="generateGreetingCard()">أنشئ البطاقة</button>
-        <canvas id="greetingCanvas" width="800" height="800"></canvas>
+        <canvas id="greetingCanvas" width="1000" height="1250"></canvas>
         <a href="#" id="downloadLink" download="بطاقة_معايدة.png">تحميل البطاقة</a>
 
         <div class="follow-link">
@@ -130,15 +130,15 @@
                 ctx.clearRect(0, 0, canvas.width, canvas.height);
                 ctx.drawImage(cardImage, 0, 0, canvas.width, canvas.height);
 
-                // نص المعايدة الأول
-                ctx.font = '42px Mestika';
+                // نص المعايدة
+                ctx.font = '50px Mestika';
                 ctx.fillStyle = '#000';
                 ctx.textAlign = 'center';
-                ctx.fillText('كل عام وأنتم بخير!', canvas.width / 2, canvas.height - 140);
+                ctx.fillText('كل عام وأنتم بخير!', canvas.width / 2, canvas.height - 180);
 
-                // نص التوقيع باسم المستخدم بحجم أكبر
-                ctx.font = '32px Mestika';
-                ctx.fillText(`~ ${name}`, canvas.width / 2, canvas.height - 95);
+                // التوقيع
+                ctx.font = '40px Mestika';
+                ctx.fillText(`~ ${name}`, canvas.width / 2, canvas.height - 120);
 
                 downloadLink.href = canvas.toDataURL('image/png');
                 downloadLink.style.display = 'block';
