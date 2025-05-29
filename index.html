@@ -130,15 +130,11 @@
                 ctx.clearRect(0, 0, canvas.width, canvas.height);
                 ctx.drawImage(cardImage, 0, 0, canvas.width, canvas.height);
 
-                // نص المعايدة
-                ctx.font = '50px Mestika';
+                // كتابة الاسم فقط
+                ctx.font = '42px Mestika';
                 ctx.fillStyle = '#000';
                 ctx.textAlign = 'center';
-                ctx.fillText('كل عام وأنتم بخير!', canvas.width / 2, canvas.height - 180);
-
-                // التوقيع
-                ctx.font = '40px Mestika';
-                ctx.fillText(`~ ${name}`, canvas.width / 2, canvas.height - 120);
+                ctx.fillText(`- ${name}`, canvas.width / 2, 310);
 
                 downloadLink.href = canvas.toDataURL('image/png');
                 downloadLink.style.display = 'block';
