@@ -20,49 +20,139 @@
         }
 
         body {
-            font-family: 'Manchette', sans-serif;
             font-family: 'Mestika', sans-serif;
             display: flex;
             justify-content: center;
             align-items: center;
-@@ -44,7 +53,7 @@
+            min-height: 100vh;
+            background-color: #000000;
+            margin: 0;
+            padding: 20px;
+            text-align: center;
+            color: white;
+        }
+        .container {
+            background-color: #1a1a1a;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(255,255,255,0.1);
+            max-width: 100%;
+            width: 100%;
+        }
+        .logo {
+            width: 120px;
+            height: auto;
+            margin-bottom: 20px;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        input[type="text"], button, a {
+            width: 100%;
+            padding: 10px;
             margin: 10px 0;
             border: 1px solid #444;
             border-radius: 5px;
-            font-family: 'Manchette', sans-serif;
             font-family: 'Mestika', sans-serif;
             background-color: #2a2a2a;
             color: white;
         }
-@@ -74,7 +83,7 @@
+        button {
+            background-color: white;
+            color: black;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        canvas {
+            width: 100%;
+            height: auto;
+            margin-top: 20px;
+            box-shadow: 0 4px 6px rgba(255,255,255,0.1);
+        }
+        #downloadLink {
+            display: none;
+            margin: 20px auto 0 auto;
+            text-decoration: none;
+            background-color: white;
+            color: black;
+            padding: 8px 16px;
+            border-radius: 5px;
+            font-size: 14px;
+            font-weight: bold;
+            width: fit-content;
         }
         h2 {
             font-size: 5vw;
-            font-family: 'Manchette', sans-serif;
             font-family: 'Mestika', sans-serif;
         }
         @media (max-width: 600px) {
             h2 {
-@@ -128,21 +137,18 @@
+                font-size: 24px;
+            }
+            button, input, a {
+                font-size: 16px;
+            }
+            .logo {
+                width: 80px;
+            }
+        }
+        .follow-link {
+            margin-top: 30px;
+        }
+        .follow-link a {
+            color: white;
+            text-decoration: underline;
+            font-size: 18px;
+            animation: blink 1.5s infinite;
+        }
+        @keyframes blink {
+            0%, 50%, 100% { opacity: 1; }
+            25%, 75% { opacity: 0.2; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <img src="logo.png" alt="شعار كلماشي" class="logo">
+        <h2>بطاقة معايدة كلماشيّة</h2>
+        <input type="text" id="nameInput" placeholder="اكتب اسمك الثنائي">
+        <button onclick="generateGreetingCard()">أنشئ البطاقة</button>
+        <canvas id="greetingCanvas"></canvas>
+        <a href="#" id="downloadLink" download="بطاقة_معايدة.png">تحميل البطاقة</a>
+
+        <div class="follow-link">
+            <a href="https://linkin.bio/kalamashii" target="_blank">تابع كلماشي من هنا</a>
+        </div>
+    </div>
+
+    <script>
+        const canvas = document.getElementById('greetingCanvas');
+        const ctx = canvas.getContext('2d');
+        const nameInput = document.getElementById('nameInput');
+        const downloadLink = document.getElementById('downloadLink');
+
+        function generateGreetingCard() {
+            const name = nameInput.value.trim() || 'صديقكم';
+
             const cardImage = new Image();
             cardImage.src = 'eid_card.jpg';
             cardImage.onload = function () {
-                // نضبط أبعاد الـ canvas حسب أبعاد الصورة الأصلية
                 canvas.width = cardImage.width;
                 canvas.height = cardImage.height;
 
-                // نرسم الصورة كما هي
                 ctx.clearRect(0, 0, canvas.width, canvas.height);
                 ctx.drawImage(cardImage, 0, 0);
 
-                // نضيف الاسم في نفس موضع "عبدالرحمن الرومي"
                 // استخدم خط مانشت فقط على الصورة
                 ctx.font = '48px Manchette';
                 ctx.fillStyle = '#000';
                 ctx.textAlign = 'center';
                 ctx.fillText(`- ${name}`, canvas.width / 2, 310);
 
-                // تحضير رابط التحميل
                 downloadLink.href = canvas.toDataURL('image/png');
                 downloadLink.style.display = 'block';
             };
+        }
+    </script>
+</body>
+</html>
