@@ -107,7 +107,7 @@
         <h2>بطاقة معايدة كلماشيّة</h2>
         <input type="text" id="nameInput" placeholder="اكتب اسمك الثنائي">
         <button onclick="generateGreetingCard()">أنشئ البطاقة</button>
-        <canvas id="greetingCanvas" width="1638" height="2048"></canvas>
+        <canvas id="greetingCanvas"></canvas>
         <a href="#" id="downloadLink" download="بطاقة_معايدة.png">تحميل البطاقة</a>
 
         <div class="follow-link">
@@ -126,16 +126,22 @@
 
             const cardImage = new Image();
             cardImage.src = 'eid_card.jpg';
-            cardImage.onload = function() {
-                ctx.clearRect(0, 0, canvas.width, canvas.height);
-                ctx.drawImage(cardImage, 0, 0); // بدون تحجيم
+            cardImage.onload = function () {
+                // نضبط أبعاد الـ canvas حسب أبعاد الصورة الأصلية
+                canvas.width = cardImage.width;
+                canvas.height = cardImage.height;
 
-                // كتابة الاسم في نفس موضع "عبدالرحمن الرومي"
+                // نرسم الصورة كما هي
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                ctx.drawImage(cardImage, 0, 0);
+
+                // نضيف الاسم في موضع محدد (مثلاً y = 310px)
                 ctx.font = '48px Mestika';
                 ctx.fillStyle = '#000';
                 ctx.textAlign = 'center';
                 ctx.fillText(`- ${name}`, canvas.width / 2, 310);
 
+                // تحضير رابط التحميل
                 downloadLink.href = canvas.toDataURL('image/png');
                 downloadLink.style.display = 'block';
             };
