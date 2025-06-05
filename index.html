@@ -154,19 +154,28 @@
       const cardImage = new Image();
       cardImage.src = 'eid_card.jpg';
       cardImage.onload = function () {
-        // نضبط أبعاد الـ canvas حسب أبعاد الصورة الأصلية
-        canvas.width = cardImage.width;
-        canvas.height = cardImage.height;
+        // مقياس التصغير
+        const scale = 0.5;
 
-        // نرسم الصورة كما هي
+        // أبعاد مصغرة للصورة
+        canvas.width = cardImage.width * scale;
+        canvas.height = cardImage.height * scale;
+
+        // نرسم الصورة بحجم أصغر
         ctx.clearRect(0, 0, canvas.width, canvas.height);
-        ctx.drawImage(cardImage, 0, 0);
+        ctx.drawImage(
+          cardImage,
+          0,
+          0,
+          cardImage.width * scale,
+          cardImage.height * scale
+        );
 
-        // نضيف الاسم على الصورة
-        ctx.font = '240px Manchette';
+        // نضيف الاسم بمكان مناسب حسب التصغير
+        ctx.font = `${240 * scale}px Manchette`;
         ctx.fillStyle = '#000';
         ctx.textAlign = 'center';
-        ctx.fillText(`- ${name}`, canvas.width / 2, 1200);
+        ctx.fillText(`- ${name}`, canvas.width / 2, 1200 * scale);
 
         // تصدير كـ JPEG بجودة 70%
         downloadLink.href = canvas.toDataURL('image/jpeg', 0.7);
